@@ -23,10 +23,10 @@ public class EventoService {
         }
         return eventoRimosso;
     }
-    public Evento updateEvento(Evento eventoDaAggiornare){
+    public Evento updateEvento(Evento eventoDaAggiornare, Integer idDaAggiornare){
         Evento eventoAggiornato = new Evento();
         for(Evento evento : listaDiEventi){
-            if(evento.getId().equals(eventoDaAggiornare.getId())){
+            if(evento.getId().equals(idDaAggiornare)){
                 evento.setId(eventoDaAggiornare.getId());
                 evento.setNome(eventoDaAggiornare.getNome());
                 evento.setDataInizio(eventoDaAggiornare.getDataInizio());
@@ -36,6 +36,15 @@ public class EventoService {
             }
         }
         return eventoAggiornato;
+    }
+    public Evento visualizzaEvento(Integer idToView){
+        Evento eventoVisualizzato = new Evento();
+        for(Evento evento : listaDiEventi){
+            if(evento.getId().equals(idToView)){
+                eventoVisualizzato = evento;
+            }
+        }
+        return eventoVisualizzato;
     }
     public List<Evento> getAllEventi(){
         return listaDiEventi;

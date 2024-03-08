@@ -7,6 +7,7 @@ public class Calendar {
     private Integer id;
     private String nome;
     private List<Evento> eventi;
+    public Calendar() {}
     public Calendar(Integer id, String nome) {
         this.id = id;
         this.nome = nome;

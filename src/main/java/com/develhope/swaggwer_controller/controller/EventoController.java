@@ -23,14 +23,19 @@ public class EventoController {
         Evento eventoRimosso = eventoService.deleteEvento(EventoDaRimuovere);
         return ResponseEntity.ok().body(eventoRimosso);
     }
-    @PostMapping("/update")
-    public ResponseEntity<Evento> updateEvento(@RequestBody Evento eventoDaAggiornare){
-        Evento eventoAggiornato = eventoService.updateEvento(eventoDaAggiornare);
+    @PutMapping("/update/{idDaAggiornare}")
+    public ResponseEntity<Evento> updateEvento(@RequestBody Evento eventoDaAggiornare, @PathVariable Integer idDaAggiornare){
+        Evento eventoAggiornato = eventoService.updateEvento(eventoDaAggiornare, idDaAggiornare);
         return ResponseEntity.ok().body(eventoAggiornato);
     }
-    @GetMapping("/eventi")
-    public ResponseEntity<List<Evento>> getEventi(){
+    @GetMapping("/listaEventi")
+    public ResponseEntity<List<Evento>> getListEventi(){
         List<Evento> eventiPresi = eventoService.getAllEventi();
         return ResponseEntity.ok().body(eventiPresi);
+    }
+    @GetMapping("/evento/{idDaVisualizzare}")
+    public ResponseEntity<Evento> getEvento(@PathVariable Integer idDaVisualizzare){
+        Evento eventoVisualizzato = eventoService.visualizzaEvento(idDaVisualizzare);
+        return ResponseEntity.ok().body(eventoVisualizzato);
     }
 }
